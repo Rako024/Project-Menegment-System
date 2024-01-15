@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Main</title>
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #3498db;
+        }
+
+        th {
+            background-color: #2980b9;
+        }
+
+        tr:nth-child(even) {
+            background-color: #34495e;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #2c3e50;
+        }
+
+        a {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .add-project-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            margin-top: -30px;
+        }
+        .delete{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Project List</h2>
+    <button class="add-project-button" onclick="window.location.href='/admin/createProject'">Add Project</button>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+
+        </tr>
+        <tr th:each="project : ${projects}">
+            <td th:text="${project.id}"></td>
+            <td th:text="${project.name}"></td>
+            <td th:text="${project.description}"></td>
+
+            <td>
+                <a th:href="@{'/admin/editProject/' + ${project.id}}">Edit</a>
+                <a class="delete" th:href="@{'/admin/deleteProject/' + ${project.id}}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

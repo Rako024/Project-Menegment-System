@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Project</title>
+  <style>
+    body {
+      background-color: #2c3e50;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 50%;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 20px 0;
+      display: inline-block;
+      border: 1px solid #3498db;
+      box-sizing: border-box;
+      border-radius: 4px;
+      background-color: #2980b9;
+      color: white;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .add-project-button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: left;
+      margin-top: -30px;
+    }
+  </style>
+</head>
+<body>
+<button class="add-project-button" onclick="window.location.href='/admin/'">Back</button>
+<div class="container">
+  <h2>Edit Project</h2>
+  <form action="#" th:action="@{/admin/updateProject}" th:object="${project}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required>
+
+    <label for="description">Description
+    </label>
+    <textarea id="description" name="description" th:field="*{description}" required></textarea>
+    ruby
+    Copy code
+    <label for="startDate">Start Date:</label>
+    <input type="text" id="startDate" name="startDate" th:field="*{startDate}" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="text" id="endDate" name="endDate" th:field="*{endDate}" required>
+
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" th:field="*{price}" required>
+
+    <label for="projectLink">Project Link:</label>
+    <input type="text" id="projectLink" name="projectLink" th:field="*{projectLink}" required>
+
+
+
+
+
+    <button type="submit">Update Project</button>
+  </form>
+</div>
+</body>
+</html>
